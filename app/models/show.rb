@@ -1,9 +1,15 @@
 class Show < ActiveRecord::Base
   belongs_to :network
   has_many :characters 
+  has_many :actors, through: :characters
 
   def actors_list
-    binding.pry
-    self.Actor.full_name.all
+    self.actors.collect do |a|
+        a.full_name
+    end
+  end
+
+  def genre
+
   end
 end
